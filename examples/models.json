@@ -1,0 +1,29 @@
+{
+  "providers": {
+    "ollama_local": {
+      "baseUrl": "http://my-ollama:11434/v1",
+      "api": "openai-completions",
+      "apiKey": "ollama",
+      "models": [
+        {
+          "id": "qwen3.8:27b",
+          "name": "Qwen 3.8 27B (Local)",
+          "contextWindow": 65536,
+          "maxTokens": 8192,
+          "input": ["text"]
+        }
+      ]
+    },
+    "openrouter": {
+      "baseUrl": "https://openrouter.ai/api/v1",
+      "api": "openai-completions",
+      "models": [
+        {
+          "id": "google/gemma-4-26b-a4b-it:free",
+          "name": "Gemma 4 Free"
+        }
+      ]
+    }
+  }
+}
+
