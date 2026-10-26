@@ -83,8 +83,8 @@ read -p "Press [Enter] to continue..."
 
 $ENGINE run --rm -it \\
   --name "$CONTAINER_NAME" \\
-  -v "$(pwd)/$AGENT_HOME:/root/.pi/agent:z" \\
-  -v "\$(pwd):/workspace:z" \\
+  --mount type=bind,source="$(pwd)/$AGENT_HOME",target="/root/.pi/agent" \\
+  --mount type=bind,source="\$(pwd)",target="/workspace" \\
   $IMAGE_NAME "\$@"
 EOF
 
@@ -111,11 +111,12 @@ read -p "Press [Enter] to continue..."
 
 $ENGINE run --rm -it \\
   --name "$CONTAINER_NAME" \\
-  -v "$(pwd)/$AGENT_HOME:/root/.pi/agent:z" \\
-  -v "\$WORKSPACE_PATH:/workspace:z" \\
+  --mount type=bind,source="$(pwd)/$AGENT_HOME",target="/root/.pi/agent" \\
+  --mount type=bind,source="\$WORKSPACE_PATH",target="/workspace" \\
   $IMAGE_NAME "\$@"
 EOF
 
 chmod +x ${PIBOX_WORKSPACE_DIRECTORY_SCRIPT}
 
 echo "Initialization complete! See the README.md How-To for details."
+

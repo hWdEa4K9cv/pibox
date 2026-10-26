@@ -9,7 +9,9 @@ A secure, rootless sandbox for running the Pi Coding Agent isolated with Podman 
 
 ## Quick Start
 
-Run the init script from Git Bash for Windows or Bash on Linux to build the container image and generate your PiBox runner scripts:
+PiBox is designed to be run from Git Bash for Windows or Bash on Linux.
+
+Run the init script to build the container image and generate your PiBox runner scripts:
    ```bash
    ./init.sh
    ```
@@ -22,14 +24,17 @@ Add the following snippet to your `~/.bashrc` on Windows or Linux to make the sc
 This also adds the alias `pibox` as a shortcut to `pibox-workspace-directory.sh`. 
 Adjust this to your preferred sandboxing variant.
 
+- Replace <YOUR_PATH> with your/absolute/path/to/pibox/bin.
+- Use Unix-style paths on Windows and Linux.
+
+
 ```bash
-if [ -d "your/absolute/path/to/pibox/bin" ]; then
-export PATH="your/absolute/path/to/pibox/bin:$PATH"
+if [ -d "<YOUR_PATH>" ]; then
+export PATH="<YOUR_PATH>:$PATH"
 fi
 
 alias pibox="pibox-workspace-directory.sh"
 ```
-
 
 The init script will also create the following files in the `bin` directory located in this project:
 - `pibox-current-directory.sh`
@@ -46,6 +51,7 @@ To specify a permanent sandbox workspace for the `pibox-workspace-directory.sh` 
 - Configure default models manually in `pi_agent_home/models.json`, see `examples/models.json`
 
 ## Next Steps
-- [ ] Add user mapping when using `docker` engine on Linux.
+- [ ] Add user mapping when using `docker` engine on Linux
 - [ ] Allow multiple workspace paths for `workspace.txt`
-- [ ] Optional: Add Network Sandboxing
+- [ ] Optional: Add a sandbox mode just for chat interaction (no directory access)
+- [ ] Optional: Add network sandboxing
